@@ -40,7 +40,6 @@ const getExams = async (req, res) => {
     try {
         const formattedDate = date.split('-').reverse().join('-');
         const dateObject = new Date(formattedDate).toISOString();
-
         const schedules = await Schedule.find({ date: dateObject, time: time, user: user }).select('sem branch slot subcode').lean();
 
         const exams = schedules.reduce((acc, { sem, branch, slot }) => {

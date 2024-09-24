@@ -49,7 +49,7 @@ async function createBranches(data) {
         // Convert the data object to JSON string
         const jsonData = JSON.stringify(data);
         // Invoke the Python script with JSON data as an argument
-        const pythonProcess = spawn('python', ['branches.py', jsonData]);
+        const pythonProcess = spawn('python3', ['branches.py', jsonData]);
 
         pythonProcess.stdout.on('data', (data) => {
             console.log(`stdout: ${data}`);

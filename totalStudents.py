@@ -24,7 +24,7 @@ for i in slot_list:
     # print(code_list)
     for code in code_list:
         check_supply = 1
-        wb_branch = openpyxl.load_workbook('.\\updatedExcels\\S'+str(sem)+'_'+code+'.xlsx')
+        wb_branch = openpyxl.load_workbook('./updatedExcels/S'+str(sem)+'_'+code+'.xlsx')
         ws_branch_reg = wb_branch[input_slot]
         # CHECKING IF THERE IS SUPPLY STUDENTS OR NOT
         try:
