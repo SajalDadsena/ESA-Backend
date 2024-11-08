@@ -10,7 +10,7 @@ data = json.loads(data_json)
 
 for sem in data:
     # LOADING MAIN EXCEL SHEET
-    # wb = openpyxl.load_workbook('./uploadedExcels/arjun-miniproject.xlsx')
+    # wb = openpyxl.load_workbook('./Excels/arjun-miniproject.xlsx')
     wb = openpyxl.load_workbook('.\\uploadedExcels\\'+sem)
     sheetname = wb.sheetnames
     ws = wb[sheetname[0]]

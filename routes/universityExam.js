@@ -7,6 +7,7 @@ const fileExtLimiter = require('../middlewares/fileExtLimiter');
 const fileSizeLimiter = require('../middlewares/fileSizeLimiter');
 
 router.get('/', univeristyExamController.getSubcode)
+
       .post('/', univeristyExamController.addSchedule)
       .post('/file-upload', fileUpload({ createParentPath: true }),
         filePayloadExists,
@@ -14,6 +15,7 @@ router.get('/', univeristyExamController.getSubcode)
         fileSizeLimiter,
         univeristyExamController.uploadFile)
       .get('/schedule', univeristyExamController.viewSchedules)
+      .get('/get-file',univeristyExamController.getFile)
       .delete('/:id', univeristyExamController.deleteSchedule);
 
 module.exports = router;

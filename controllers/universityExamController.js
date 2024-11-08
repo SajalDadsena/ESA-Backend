@@ -90,4 +90,25 @@ const uploadFile = async (req, res) => {
     return res.status(201).json({ status: "success", message: Object.keys(files).toString() });
 }
 
-module.exports = { getSubcode, addSchedule, viewSchedules, deleteSchedule, uploadFile };
+const fs = require('fs');
+
+const getFile = async (req, res) => {
+    const fileName = 'students.xlsx'; // Get the file name from the request parameters
+    const filePath = path.join(__dirname, "..", "uploadedExcels", fileName);
+
+    // Check if the file exists
+    fs.access(filePath, fs.constants.F_OK, (err) => {
+        if (err) {
+            return res.status(404).json({ status: "error", message: "File not found" });
+        }
+
+        // If the file exists, send it to the client
+        res.download(filePath, fileName, (err) => {
+            if (err) {
+                res.status(500).json({ status: "error", message: "Could not download the file" });
+            }
+        });
+    });
+}
+
+module.exports = { getSubcode, addSchedule, viewSchedules, deleteSchedule, uploadFile, getFile };
